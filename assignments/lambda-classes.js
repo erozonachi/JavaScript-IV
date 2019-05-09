@@ -59,3 +59,20 @@ class Student extends Person {
     console.log(`${this.name} has begun sprint challenge on ${subject}`);
   }
 }
+
+// ProjectManager :- Sub-class of Instructor class
+class ProjectManager extends Instructor {
+  constructor(info) {
+    super(info);
+    this.gradClassName = info.gradClassName;
+    this.favInstructor = info.favInstructor;
+  }
+
+  standUp(channel) {
+    console.log(`${this.name} announces to ${channel}, @channel standy times!​​​​​`);
+  }
+
+  debugsCode(student, subject) {
+    console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
+  }
+}
