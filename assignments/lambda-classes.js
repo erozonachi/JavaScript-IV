@@ -30,6 +30,18 @@ class Instructor extends Person {
   grade(student, subject) {
     console.log(`${student.name} receives a perfect score on ${subject}`);
   }
+
+  gradeStudent(student) {
+    let score = Math.floor(Math.random()*99) + 1;
+    score *= Math.random() > 0.5 ? 1 : -1;
+    student.grade += score;
+    if (student.grade > 100) {
+      student.grade = 100;
+    } else if (student.grade < 1) {
+      student.grade = 1;
+    }
+  }
+
 }
 // Objects of Instructor
 const gab = new Instructor({
@@ -59,6 +71,7 @@ class Student extends Person {
     this.previousBackground = info.previousBackground;
     this.className = info.className;
     this.favSubjects = info.favSubjects || [];
+    this.grade = (info.grade > 100? 100 : info.grade) || 1;
   }
 
   listsSubjects() {
@@ -77,6 +90,14 @@ class Student extends Person {
 
   sprintChallenge(subject) {
     console.log(`${this.name} has begun sprint challenge on ${subject}`);
+  }
+
+  graduate() {
+    if (this.grade > 70) {
+      console.log(`${this.name} is due for graduation`);
+    } else {
+      console.log(`You total grade of ${this.grade}, you ${70-this.grade}% more to be able to graduate.`);
+    }
   }
 }
 // Objects of Student class
@@ -97,6 +118,7 @@ const jam = new Student({
   gender: `male`,
   previousBackground: `Software dev`,
   className: `IOSEU2`,
+  grade: 50,
 });
 
 
@@ -177,5 +199,10 @@ console.log(`------------------------------`);
 alex.speak();
 alex.grade(jam, `Swift II`);
 alex.standUp(`IOSEU2-Alex`);
-alex.debugsCode(eneh, `Swift IV`);
+alex.debugsCode(jam, `Swift IV`);
+alex.gradeStudent(jam);
 console.log(`------------------------------`);
+
+// Extra Test for Stretch goals
+console.log(`${jam.name}'s grade:- ${jam.grade}`);
+jam.graduate();
