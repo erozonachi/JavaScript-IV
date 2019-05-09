@@ -13,3 +13,21 @@ class Person {
     console.log(`Hello my name is ${this.name}, I am from ${this.location}`);
   }
 }
+
+// Instructor :- Sub-class of Person
+class Instructor extends Person {
+  constructor(info) {
+    super(info);
+    this.specialty = info.specialty;
+    this.favLanguage = info.favLanguage;
+    this.catchPhrase = info.catchPhrase;
+  }
+
+  demo(subject) {
+    console.log(`Today we are learning about ${subject}`);
+  }
+
+  grade(student, subject) {
+    console.log(`${student.name} receives a perfect score on ${subject}`);
+  }
+}
