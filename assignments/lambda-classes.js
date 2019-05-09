@@ -31,3 +31,31 @@ class Instructor extends Person {
     console.log(`${student.name} receives a perfect score on ${subject}`);
   }
 }
+
+// Student :- Another sub-class of Person
+class Student extends Person {
+  constructor(info) {
+    super(info);
+    this.previousBackground = info.previousBackground;
+    this.className = info.className;
+    this.favSubjects = info.favLanguage || [];
+  }
+
+  listsSubjects() {
+    if (this.favSubjects.length > 0) {
+      this.favSubjects.forEach((subject, pos) => {
+        console.log(`Favorite Subject ${pos+1}:- ${subject}`);
+      });
+    } else {
+      console.log(`${this.name} has no favorite subject`);
+    }
+  }
+
+  PRAssignment(subject) {
+    console.log(`${this.name} has submitted a PR for ${subject}`);
+  }
+
+  sprintChallenge(subject) {
+    console.log(`${this.name} has begun sprint challenge on ${subject}`);
+  }
+}
